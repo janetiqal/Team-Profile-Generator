@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/janetiqal/Team-Profile-Generator#readme",
   "dependencies": {
+    "email-validator": "^2.0.4",
     "inquirer": "^8.1.2",
+    "inquirer-loop": "^0.3.0",
     "jest": "^27.0.6"
   }
 }

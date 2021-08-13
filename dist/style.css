@@ -1,0 +1,11 @@
+
+/*all the cards are flexed*/
+.flex {
+    display: flex;
+}
+
+.jumbotron{
+    background-color: beige;
+    margin: auto;
+    padding-bottom: 50px;
+}
