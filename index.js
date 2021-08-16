@@ -22,7 +22,9 @@ const mainQuestions = [{
 {
     type: "input",
     message: "Input the ID of the Employee",
-    name: "id"
+    name: "id",
+    validate: string => string.length > 0 ? true : "You must include an ID."
+
 },
 {
     type: "input",
@@ -44,22 +46,20 @@ const mainQuestions = [{
 },
 {
     type: "input",
-    message: "Input the name of the school of the Intern",
+    message: "Input the name of the school for the Intern",
     name: "school",
     when: response => response.role === "Intern",
 
 },
 {
     type: "input",
-    message: "Input the github of the Engineer",
+    message: "Input the github username of the Engineer",
     name: "github",
     when: response => response.role === "Engineer",
     //github usernames are min. 4 characters long
     validate: string => string.length >= 4 ? true : "Your github username can not be less than 4 characters."
 }
 ]
-
-//do i need the questions for looping or can questions : mainquestions?
 
 function init() {
     inquirer.prompt(mainQuestions)
@@ -95,27 +95,28 @@ function init() {
     }
 
     // do this for each instance of employee and keep pushin in the array. 
-    function roleCheck(response) {
-    if (response.role === "Manager") {
-        let manager = new Manager(response.name, response.id, response.email, response.officeNumber)
-        answers.push(manager)
-        // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
-        // console.log("manager", response)
-    }
-    if (response.role === "Intern") {
-        let intern = new Intern(response.name, response.id, response.email, response.school)
-        answers.push(intern)
-        // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
-        // console.log("intern", response)
-    }
-    if (response.role === "Engineer") {
-        let engineer = new Engineer(response.name, response.id, response.email, response.github)
-        answers.push(engineer)
-        // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
+//     function roleCheck(response) {
+//     if (response.role === "Manager") {
+//         let manager = new Manager(response.name, response.id, response.email, response.officeNumber)
+//         answers.push(manager)
+//         // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
+//         // console.log("manager", response)
+//     }
+//     if (response.role === "Intern") {
+//         let intern = new Intern(response.name, response.id, response.email, response.school)
+//         answers.push(intern)
+//         // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
+//         // console.log("intern", response)
+//     }
+//     if (response.role === "Engineer") {
+//         let engineer = new Engineer(response.name, response.id, response.email, response.github)
+//         answers.push(engineer)
+//         // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
 
-        // console.log("engineer", response)
-    }
-}
+//         // console.log("engineer", response)
+//     }
+// }
+
 function writeHTML(answers) {
     fs.writeFile(`./Team2.html`, generateTemplate(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
 }
@@ -125,5 +126,4 @@ function writeHTML(answers) {
 init();
 
 //to do:
-//fix the append file instead of writing the cards in by themselves
-// work on the array loop...
+//figure out how to append the html file with just the htmlCard not the entire function from card-template.js

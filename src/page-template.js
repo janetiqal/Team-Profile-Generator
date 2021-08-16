@@ -1,3 +1,5 @@
+// const htmlCard =require("./card-template")
+
 function generateTemplate () {
 
     return `<!DOCTYPE html>
@@ -38,18 +40,22 @@ function generateTemplate () {
 };
 
 const cards =function generateCard(answers){
+    var htmlCard = ``;
     for(let i =0; i <answers.length; i ++){
-    return `<div class="col-12 flex justify-content-center">
+   htmlCard+= `<div class="col-12 flex justify-content-center">
     <div class="card ml-3" style="width: 18rem;">
         <h2 class="card-header text-center">${answers[i].name}</h2>
         <h6 class="card-text text-center">${answers[i].role}</h6>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">${answers[i].id}</li>
-            <li class="list-group-item">${answers[i].email}</li>
+            <li class="list-group-item">ID: ${answers[i].id}</li>
+            <li class="list-group-item"><a href ="mailto:"${answers[i].email}">${answers[i].email}</li>
             <li class="list-group-item">${answers[i].officeNumber || answers[i].github || answers[i].school}</li>
         </ul>
-    </div> `
-}};
+    </div>
+    `
+}
+return htmlCard;
+};
 
-module.exports= generateTemplate;
 module.exports = cards;
+module.exports= generateTemplate;
