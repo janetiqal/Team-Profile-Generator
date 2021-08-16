@@ -19,4 +19,6 @@ Link to HTML [page](https://janetiqal.github.io/Team-Profile-Generator/Team.html
 Open the integrated terminal and run npm i, then run node index.js to begin prompts in the console. 
 ## Tests
 This project includes 13 tests, that should all pass when the tests folder is opened in the terminal and npm test is run.
+## Credits
+Npm packages inquirer and jest were used. Bootstrap was used for a basic design.
 ## Created By Janet Iqal
