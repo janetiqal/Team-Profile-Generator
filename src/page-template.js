@@ -2,7 +2,7 @@
 const roleCheck = require("../index")
 
 
-function generateTemplate () {
+function generateTemplate (answers, response) {
 
     return `<!DOCTYPE html>
 <html lang="en">
@@ -26,11 +26,12 @@ function generateTemplate () {
 
     <div class="container">
         <div class="row">
-        ${cards}
+        <div class="col-12 flex justify-content-center">
+        ${generateCard(answers, response)}
         </div>
     </div>
 
-
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
@@ -41,17 +42,17 @@ function generateTemplate () {
     `
 };
 
-const cards =function generateCard(answers){
+function generateCard(answers, response){
     var htmlCard = ``;
     for(let i =0; i <answers.length; i ++){
-   htmlCard+= `<div class="col-12 flex justify-content-center">
+   htmlCard+= `
     <div class="card ml-3" style="width: 18rem;">
         <h2 class="card-header text-center">${answers[i].name}</h2>
         <h6 class="card-text text-center">${answers[i].role}</h6>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${answers[i].id}</li>
-            <li class="list-group-item"><a href ="mailto:"${answers[i].email}">${answers[i].email}</li>
-            <li class="list-group-item">${roleCheck}</li>
+            <li class="list-group-item"><a href ="mailto:"${answers[i].email}">${answers[i].email}</a></li>
+            <li class="list-group-item">${roleCheck(response)}</li>
         </ul>
     </div>
     `
@@ -59,5 +60,8 @@ const cards =function generateCard(answers){
 return htmlCard;
 };
 
-module.exports = cards;
+
+
+
+module.exports = generateCard;
 module.exports= generateTemplate;

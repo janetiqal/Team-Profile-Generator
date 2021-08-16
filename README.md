@@ -7,5 +7,13 @@ I was asked to build a command-line application that takes in information about 
 
 I started by first creating the Employee parent class and creating constructor functions to get the information I needed based on the employee type. I then created my tests, and checked each test when I created the seperate employee classess that extended the parent classes. 
 
-I set up a function to run the inquirer prompts, and pushed the responses to those questions into an empty array that was created globally. I looped over that array and created cards 
+I set up a function to run the inquirer prompts, and pushed the responses to those questions into an empty array that was created globally. I looped over that array and created cards based on the array length. If the user decideds to stop adding employees to the team, the html file is written. 
+## Demo Video
+
+## Screen Shot
+
+## Usage
+Open the integrated terminal and run npm i, then run node index.js to begin prompts in the console. 
+## Tests
+This project includes 13 tests, that should all pass when the tests folder is opened in the terminal and npm test is entered.
 ## Created By Janet Iqal

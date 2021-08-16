@@ -1,20 +1,20 @@
 const inquirer = require("inquirer");
-// credit to https://github.com/ckoliber/inquirer-loop for helping me find a way to loop through the questions
-//follows this format:inquirer.registerPrompt(name, prompt)
-//"loop" is the name and prompt is the prompt obj itself
-inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
+// // credit to https://github.com/ckoliber/inquirer-loop for helping me find a way to loop through the questions
+// //follows this format:inquirer.registerPrompt(name, prompt)
+// //"loop" is the name and prompt is the prompt obj itself
+// inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
 // const emailValidator = require("email-validator");
 const fs = require("fs");
 const generateTemplate = require("./src/page-template")
-const cards = require("./src/page-template")
-const Manager = require("./lib/Manager")
-const Intern = require("./lib/Intern")
-const Engineer = require("./lib/Engineer")
+
+// const Manager = require("./lib/Manager")
+// const Intern = require("./lib/Intern")
+// const Engineer = require("./lib/Engineer")
 
 var answers = [];
 const mainQuestions = [{
     type: "input",
-    message: "Input the name of the Employee",
+    message: "Input the name of the Employee.",
     name: "name",
     validate: string => string.length > 0 ? true : "You must include a name."
 
@@ -42,12 +42,14 @@ const mainQuestions = [{
     type: "input",
     message: "Input the office number of the Manager",
     name: "officeNumber",
+    validate: string => string.length > 0 ? true : "You must input an Office Number.",
     when: response => response.role === "Manager",
 },
 {
     type: "input",
     message: "Input the name of the school for the Intern",
     name: "school",
+    validate: string => string.length > 0 ? true : "You must input a school.",
     when: response => response.role === "Intern",
 
 },
@@ -79,7 +81,7 @@ function init() {
                         init();
                     }
                     if(check.continue === "No"){
-                        roleCheck(response)
+                        // roleCheck(response)
                         writeHTML(answers)
                         console.log("final",answers)
                     }
@@ -94,32 +96,21 @@ function init() {
         });
     }
 
-    // do this for each instance of employee and keep pushin in the array. 
-    function roleCheck(response) {
+//not working: error rolecheck is not a function.
+function roleCheck(response) {
         var potentialEmployee = ``;
     if (response.role === "Manager") {
         // let manager = new Manager(response.name, response.id, response.email, response.officeNumber)
-         potentialEmployee = `Office Number: ${response.officeNumber}`
-        // answers.push(manager)
-        // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
-        // console.log("manager", response)
+         potentialEmployee=`Office Number: ${response.officeNumber}`
     }
-    if (response.role === "Intern") {
+    else if (response.role === "Intern") {
         // let intern = new Intern(response.name, response.id, response.email, response.school)
-        // answers.push(intern)
-     potentialEmployee = `School: ${response.school}`
-        // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
-        // console.log("intern", response)
+        potentialEmployee=`School: ${response.school}`
     }
-    if (response.role === "Engineer") {
+    else if (response.role === "Engineer") {
         // let engineer = new Engineer(response.name, response.id, response.email, response.github)
          potentialEmployee = `Github: <a href="https://github.com/${response.github}" target="_blank"> ${response.github}</a>`
-        // answers.push(engineer)
-        // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
-
-        // console.log("engineer", response)
     }
-        // document.getElementById("employeeType").innerHTML= potentialEmployee;
         console.log("potential employee", potentialEmployee)
         return potentialEmployee;
 }
@@ -130,8 +121,7 @@ function writeHTML(answers) {
 
 
 //calling the init function
-init();
 module.exports = roleCheck;
+init();
 //to do:
-//figure out how to append the html file with just the htmlCard not the entire function from card-template.js
 //possibly loop over the roles and create a result that says `Office Number : ${response}` etc.. for each role 
