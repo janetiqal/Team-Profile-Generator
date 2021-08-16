@@ -12,6 +12,8 @@ I set up a function to run the inquirer prompts, and pushed the responses to tho
 Full video link to demo [here](https://drive.google.com/file/d/1QhFxxcTE3r5BN_iM7odVntN6QSaHYRvM/view?usp=sharing) </br>
 ![Demo](./images/demo.gif)
 ## Screen Shot
+Link to HTML [page](https://janetiqal.github.io/Team-Profile-Generator/Team.html)
+<img width="686" alt="Screen Shot 2021-08-16 at 1 49 29 PM" src="https://user-images.githubusercontent.com/84414488/129618329-8a775736-b7fd-470f-a7fc-90ed31a5c54e.png">
 
 ## Usage
 Open the integrated terminal and run npm i, then run node index.js to begin prompts in the console. 
