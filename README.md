@@ -9,7 +9,8 @@ I started by first creating the Employee parent class and creating constructor f
 
 I set up a function to run the inquirer prompts, and pushed the responses to those questions into an empty array that was created globally. I checked each role and generate new employees using the class constructors and pushed those responses into the empty array. I looped over that array and created cards based on the array length. If the user decideds to stop adding employees to the team, the html file is written. I also created a function to determine each role and to make it clear whether an employee has a github, school name, or office number.
 ## Demo Video
-
+Full video link to demo [here](https://drive.google.com/file/d/1QhFxxcTE3r5BN_iM7odVntN6QSaHYRvM/view?usp=sharing) </br>
+![Demo](./images/demo.gif)
 ## Screen Shot
 
 ## Usage
