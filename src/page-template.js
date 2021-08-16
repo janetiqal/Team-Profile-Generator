@@ -1,4 +1,3 @@
-// const htmlCard =require("./card-template")
 const roleCheck = require("../index")
 
 
@@ -43,6 +42,7 @@ function generateTemplate (answers, response) {
 };
 
 function generateCard(answers, response){
+    // roleCheck(response);
     var htmlCard = ``;
     for(let i =0; i <answers.length; i ++){
    htmlCard+= `
