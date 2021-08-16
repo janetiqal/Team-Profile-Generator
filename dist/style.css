@@ -1,11 +1,25 @@
-
+.body{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    
+}
 /*all the cards are flexed*/
 .flex {
     display: flex;
+    flex-wrap: wrap;
+    margin: 30px;
+
 }
 
 .jumbotron{
     background-color: beige;
     margin: auto;
     padding-bottom: 50px;
+}
+.card {
+    margin: 15px;
+    width: 18rem;
+}
+.card-header{
+    background-color: bisque;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

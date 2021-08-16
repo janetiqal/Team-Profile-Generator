@@ -1,15 +1,9 @@
 const inquirer = require("inquirer");
-// // credit to https://github.com/ckoliber/inquirer-loop for helping me find a way to loop through the questions
-// //follows this format:inquirer.registerPrompt(name, prompt)
-// //"loop" is the name and prompt is the prompt obj itself
-// inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
-// const emailValidator = require("email-validator");
 const fs = require("fs");
-const generateTemplate = require("./src/page-template")
-
-// const Manager = require("./lib/Manager")
-// const Intern = require("./lib/Intern")
-// const Engineer = require("./lib/Engineer")
+const  { generateTemplate }= require("./src/page-template")
+const Manager = require("./lib/Manager")
+const Intern = require("./lib/Intern")
+const Engineer = require("./lib/Engineer")
 
 var answers = [];
 const mainQuestions = [{
@@ -66,8 +60,16 @@ const mainQuestions = [{
 function init() {
     inquirer.prompt(mainQuestions)
         .then((response) => {
-            //pushing the response to the questions into an empty array called Answers
-            answers.push(response)
+            //if didnt use, classes. could use 65, and just .role instead of getrole() and it would work.
+            // answers.push(response)
+            //using the classes and pushing the response to the questions into an empty array called Answers
+            if (response.role==="Manager"){
+                answers.push(new Manager(response.name, response.id, response.email, response.officeNumber))
+            }else if(response.role==="Intern"){
+                answers.push(new Intern(response.name, response.id, response.email, response.school))
+            }else if(response.role==="Engineer"){
+                answers.push(new Engineer(response.name, response.id, response.email, response.github))
+            }
             inquirer.prompt([
                 {
                     type: "list",
@@ -81,7 +83,6 @@ function init() {
                         init();
                     }
                     if(check.continue === "No"){
-                        // roleCheck(response)
                         writeHTML(answers)
                         console.log("final",answers)
                     }
@@ -96,32 +97,11 @@ function init() {
         });
     }
 
-//not working: error rolecheck is not a function.
-function roleCheck(response) {
-        var potentialEmployee = ``;
-    if (response.role === "Manager") {
-        // let manager = new Manager(response.name, response.id, response.email, response.officeNumber)
-         potentialEmployee=`Office Number: ${response.officeNumber}`
-    }
-    else if (response.role === "Intern") {
-        // let intern = new Intern(response.name, response.id, response.email, response.school)
-        potentialEmployee=`School: ${response.school}`
-    }
-    else if (response.role === "Engineer") {
-        // let engineer = new Engineer(response.name, response.id, response.email, response.github)
-         potentialEmployee = `Github: <a href="https://github.com/${response.github}" target="_blank"> ${response.github}</a>`
-    }
-        console.log("potential employee", potentialEmployee)
-        return potentialEmployee;
-}
-
 function writeHTML(answers) {
-    fs.writeFile(`./Team2.html`, generateTemplate(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
+    fs.writeFile(`./Team.html`, generateTemplate(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
 }
 
 
 //calling the init function
-module.exports = roleCheck;
 init();
-//to do:
-//possibly loop over the roles and create a result that says `Office Number : ${response}` etc.. for each role 
+
