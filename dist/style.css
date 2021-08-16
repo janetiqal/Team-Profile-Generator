@@ -1,25 +1,27 @@
-.body{
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    
-}
+
 /*all the cards are flexed*/
 .flex {
     display: flex;
     flex-wrap: wrap;
     margin: 30px;
-
 }
 
 .jumbotron{
-    background-color: beige;
+    background-color: bisque;
     margin: auto;
-    padding-bottom: 50px;
+    padding: 75px;
+    font-size: 50px;
+    color: rgb(14, 13, 13);
+    font-family: 'Libre Franklin', sans-serif;
+    /* padding-bottom: 50px; */
 }
 .card {
     margin: 15px;
     width: 18rem;
+    font-family: 'Libre Franklin', sans-serif;
+
 }
 .card-header{
     background-color: bisque;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Libre Franklin', sans-serif;
 }

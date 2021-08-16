@@ -71,7 +71,7 @@ function generateCard(answers){
    htmlCard+= `
     <div class="card ml-3">
         <h2 class="card-header text-center">${answers[i].name}</h2>
-        <h6 class="card-text text-center">${answers[i].getRole()}</h6>
+        <h4 class="card-text text-center">${answers[i].getRole()}</h4>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${answers[i].id}</li>
             <li class="list-group-item"><a href ="mailto:"${answers[i].email}">${answers[i].email}</a></li>
