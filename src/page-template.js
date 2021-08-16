@@ -17,7 +17,7 @@ else if (answer.getRole() === "Intern") {
 }
 else if (answer.getRole() === "Engineer") {
     // let engineer = new Engineer(response.name, response.id, response.email, response.github)
-     potentialEmployee = `Github: <a href="https://github.com/${answer.github}" target="_blank"> ${answer.github}`
+     potentialEmployee = `Github: <a href="https://github.com/${answer.github}" target="_blank" style="color:black">${answer.github}</a> `
      icon =`<i class="bi bi-github"></i>`;
 }
     return potentialEmployee + icon;
@@ -74,7 +74,7 @@ function generateCard(answers){
         <h4 class="card-text text-center">${answers[i].getRole()}</h4>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${answers[i].id}</li>
-            <li class="list-group-item"><a href ="mailto:"${answers[i].email}">${answers[i].email}</a></li>
+            <li class="list-group-item">Email: <a href ="mailto:"${answers[i].email}" style="color:black">${answers[i].email}</a></li>
             <li class="list-group-item">${roleCheck(answers[i])}</li>
         </ul>
     </div>
