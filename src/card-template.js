@@ -1,3 +1,5 @@
+
+
 const cards =function generateCard(answers){
     //concatting the strings together of all the potential cards from the answers array.
     var htmlCard = ``;

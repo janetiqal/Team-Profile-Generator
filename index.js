@@ -79,7 +79,7 @@ function init() {
                         init();
                     }
                     if(check.continue === "No"){
-                        // roleCheck(response)
+                        roleCheck(response)
                         writeHTML(answers)
                         console.log("final",answers)
                     }
@@ -95,27 +95,34 @@ function init() {
     }
 
     // do this for each instance of employee and keep pushin in the array. 
-//     function roleCheck(response) {
-//     if (response.role === "Manager") {
-//         let manager = new Manager(response.name, response.id, response.email, response.officeNumber)
-//         answers.push(manager)
-//         // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
-//         // console.log("manager", response)
-//     }
-//     if (response.role === "Intern") {
-//         let intern = new Intern(response.name, response.id, response.email, response.school)
-//         answers.push(intern)
-//         // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
-//         // console.log("intern", response)
-//     }
-//     if (response.role === "Engineer") {
-//         let engineer = new Engineer(response.name, response.id, response.email, response.github)
-//         answers.push(engineer)
-//         // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
+    function roleCheck(response) {
+        var potentialEmployee = ``;
+    if (response.role === "Manager") {
+        // let manager = new Manager(response.name, response.id, response.email, response.officeNumber)
+         potentialEmployee = `Office Number: ${response.officeNumber}`
+        // answers.push(manager)
+        // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
+        // console.log("manager", response)
+    }
+    if (response.role === "Intern") {
+        // let intern = new Intern(response.name, response.id, response.email, response.school)
+        // answers.push(intern)
+     potentialEmployee = `School: ${response.school}`
+        // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
+        // console.log("intern", response)
+    }
+    if (response.role === "Engineer") {
+        // let engineer = new Engineer(response.name, response.id, response.email, response.github)
+         potentialEmployee = `Github: <a href="https://github.com/${response.github}" target="_blank"> ${response.github}</a>`
+        // answers.push(engineer)
+        // fs.appendFileSync(`./Team2.html`, cards(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
 
-//         // console.log("engineer", response)
-//     }
-// }
+        // console.log("engineer", response)
+    }
+        // document.getElementById("employeeType").innerHTML= potentialEmployee;
+        console.log("potential employee", potentialEmployee)
+        return potentialEmployee;
+}
 
 function writeHTML(answers) {
     fs.writeFile(`./Team2.html`, generateTemplate(answers), (err) => err ? console.error(err) : console.log('SUCCESS! HTML created'));
@@ -124,6 +131,7 @@ function writeHTML(answers) {
 
 //calling the init function
 init();
-
+module.exports = roleCheck;
 //to do:
 //figure out how to append the html file with just the htmlCard not the entire function from card-template.js
+//possibly loop over the roles and create a result that says `Office Number : ${response}` etc.. for each role 
