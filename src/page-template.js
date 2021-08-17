@@ -74,7 +74,7 @@ function generateCard(answers){
         <h4 class="card-text text-center">${answers[i].getRole()}</h4>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${answers[i].id}</li>
-            <li class="list-group-item">Email: <a href ="mailto:"${answers[i].email}" style="color:black">${answers[i].email}</a></li>
+            <li class="list-group-item">Email: <a href ="mailto:${answers[i].email}" style="color:black">${answers[i].email}</a></li>
             <li class="list-group-item">${roleCheck(answers[i])}</li>
         </ul>
     </div>
