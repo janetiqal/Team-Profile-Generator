@@ -88,13 +88,6 @@ function init() {
                     }
                 })
         })
-        .catch((error) => {
-            if (error.isTtyError) {
-                // Prompt couldn't be rendered in the current environment
-            } else {
-                // Something else went wrong
-            }
-        });
     }
 
 function writeHTML(answers) {
