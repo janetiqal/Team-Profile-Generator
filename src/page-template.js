@@ -2,29 +2,29 @@
 
 //this function makes sure the github of the engineer is able to be a clickable link, and have text saying either Office Number:, school:, or github: .
 function roleCheck(answer) {
-//using answer.getRole instead of answers.role because I am using the class constructors, (lines 71-77 in index.js)
+    //using answer.getRole instead of answers.role because I am using the class constructors, (lines 71-77 in index.js)
     var potentialEmployee = ``;
-    var icon =``;
-if (answer.getRole() === "Manager") {
-    // let manager = new Manager(response.name, response.id, response.email, response.officeNumber)
-     potentialEmployee=`Office Number: ${answer.officeNumber}`;
-     icon =`<i class="bi bi-person-lines-fill"></i>`;
-}
-else if (answer.getRole() === "Intern") {
-    // let intern = new Intern(response.name, response.id, response.email, response.school)
-    potentialEmployee=`School: ${answer.school}`;
-    icon =` <i class="bi bi-book-fill"></i>`;
-}
-else if (answer.getRole() === "Engineer") {
-    // let engineer = new Engineer(response.name, response.id, response.email, response.github)
-     potentialEmployee = `Github: <a href="https://github.com/${answer.github}" target="_blank" style="color:black">${answer.github}</a> `
-     icon =`<i class="bi bi-github"></i>`;
-}
+    var icon = ``;
+    if (answer.getRole() === "Manager") {
+        // let manager = new Manager(response.name, response.id, response.email, response.officeNumber)
+        potentialEmployee = `Office Number: ${answer.officeNumber}`;
+        icon = `<i class="bi bi-person-lines-fill"></i>`;
+    }
+    else if (answer.getRole() === "Intern") {
+        // let intern = new Intern(response.name, response.id, response.email, response.school)
+        potentialEmployee = `School: ${answer.school}`;
+        icon = ` <i class="bi bi-book-fill"></i>`;
+    }
+    else if (answer.getRole() === "Engineer") {
+        // let engineer = new Engineer(response.name, response.id, response.email, response.github)
+        potentialEmployee = `Github: <a href="https://github.com/${answer.github}" target="_blank" style="color:black">${answer.github}</a> `
+        icon = `<i class="bi bi-github"></i>`;
+    }
     return potentialEmployee + icon;
 }
 
 
-function generateTemplate (answers) {
+function generateTemplate(answers) {
 
     return `<!DOCTYPE html>
 <html lang="en">
@@ -65,10 +65,10 @@ function generateTemplate (answers) {
     `
 };
 
-function generateCard(answers){
+function generateCard(answers) {
     var htmlCard = ``;
-    for(let i =0; i <answers.length; i ++){
-   htmlCard+= `
+    for (let i = 0; i < answers.length; i++) {
+        htmlCard += `
     <div class="card ml-3">
         <h2 class="card-header text-center">${answers[i].name}</h2>
         <h4 class="card-text text-center">${answers[i].getRole()}</h4>
@@ -79,9 +79,9 @@ function generateCard(answers){
         </ul>
     </div>
     `
-}
-return htmlCard;
+    }
+    return htmlCard;
 };
 
 // can not exports two functions seperately(it defaults to the last item exported), so exporting them as objects, and importing them as deconstructed obj.
-module.exports= {generateTemplate, generateCard};
+module.exports = { generateTemplate, generateCard };
